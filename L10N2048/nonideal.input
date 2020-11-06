@@ -1,0 +1,20 @@
+units lj #lj単位系を扱う
+atom_style atomic 
+
+read_data nonideal.atoms #粒子のデータをnonideal.atomsから読み込む
+
+mass 1 1.0 # 質量の設定
+
+reset_timestep  0
+timestep        0.0001
+
+pair_style lj/cut 1.12246
+pair_modify shift yes
+pair_coeff 1 1 1.0 1.0 1.12246
+
+fix 1 all nvt temp 1.0 1.0 0.01 #温度を1.0に制御している
+
+thermo 10       #1タイムステップごとに熱力学を出力
+thermo_style custom time temp press #温度・圧力を出力
+
+run 20000 #20000ステップ実行する

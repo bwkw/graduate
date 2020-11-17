@@ -21,12 +21,12 @@ def loadfile(filename):
     
 
 def makefile(filename):
-    with open(filename, "w") as f:
+    with open(filename, "a") as f:
         int_pressure = [float(n) for n in pressure]
         volume = V
         density = N/V
         ave_pressure = sum(int_pressure[78:1992])/len(int_pressure[78:1992])
-        f.write("{} {} {}".format(volume, density, ave_pressure))
+        f.write("{} {} {}\n".format(volume, density, ave_pressure))
         
 for i in range(11):
     r = 10 + i/10
@@ -37,5 +37,5 @@ for i in range(11):
     V = r**3
     N = 2048
     loadfile("L{}.dat".format(r))
-    makefile("L{}-vdp.dat".format(r))
+    makefile("vdp.dat")
     

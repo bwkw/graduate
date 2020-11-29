@@ -28,8 +28,8 @@ def makefile(filename):
         ave_pressure = sum(int_pressure[78:1992])/len(int_pressure[78:1992])
         f.write("{} {} {}\n".format(volume, density, ave_pressure))
         
-for i in range(11):
-    r = 10 + i/10
+for i in range(51):
+    r = 10 + i/5
     tp_list = []
     time = []
     pressure = []

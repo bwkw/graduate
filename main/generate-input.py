@@ -16,6 +16,6 @@ def make_file(filename, length):
         f.write("thermo_style custom time temp press\n\n")
         f.write("run 20000")
 
-for i in range(11):
-    r = 10 + i/10
+for i in range(51):
+    r = 10 + i/5
     make_file("L{}.input".format(r), r)

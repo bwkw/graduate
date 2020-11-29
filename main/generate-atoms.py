@@ -43,8 +43,8 @@ def make_file(filename, atoms, length):
         for i, a in enumerate(atoms):
             f.write("{} {} {} {}\n".format(i+1, a.vx, a.vy, a.vz))
 
-for i in range(51):
+for i in range(201):
     atoms = []
-    r = 10 + i/5
+    r = 5 + i/10
     add_ball(atoms, 1.0, r)
     make_file("L{}.atoms".format(r), atoms, r)  

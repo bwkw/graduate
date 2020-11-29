@@ -1,6 +1,8 @@
-#Lのdatファイルを読み込み、av_preファイルを作成
+#Lのdatファイルを読み込み、densityとpressureのリスト作成
+#numpy配列として保存し、machine-learnig.pyにかける
 
 import re
+import numpy as np
 
 def loadfile(filename):
     with open(filename) as f:
@@ -22,11 +24,10 @@ def loadfile(filename):
 density_list = []
 pressure_list = []
 
-
-for i in range(51):
+for i in range(201):
     tp_list = []
     pressure = []
-    r = 10 + i/5
+    r = 5 + i/10
     V = r**3
     N = 2048
     density = N/V
@@ -36,7 +37,12 @@ for i in range(51):
     pressure_list.append(ave_pressure)
     density_list.append(density)
 
-print(pressure_list)
-print(density_list)
-
 #リストをnumpy配列として保存
+ar_density = np.array(density_list)
+ar_pressure = np.array(pressure_list)
+
+#numpy配列をバイナリファイルとして保存
+np.save("density", ar_density)
+np.save("pressure", ar_pressure)
+
+

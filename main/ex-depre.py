@@ -19,7 +19,7 @@ def loadfile(filename):
             a = tp_list[i][2]
             pressure.append(a)
 
-density = []
+density_list = []
 pressure_list = []
 
 
@@ -29,13 +29,14 @@ for i in range(51):
     r = 10 + i/5
     V = r**3
     N = 2048
-    d = N/V
+    density = N/V
     loadfile("L{}.dat".format(r))
     int_pressure = [float(a) for a in pressure]
     ave_pressure = sum(int_pressure[78:1992])/len(int_pressure[78:1992])
     pressure_list.append(ave_pressure)
-    density.append(d)
+    density_list.append(density)
 
 print(pressure_list)
+print(density_list)
 
 #リストをnumpy配列として保存

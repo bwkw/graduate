@@ -5,10 +5,10 @@ import math
 
 #データセット
 x_all = np.load("density.npy")
-y_all = np.load("density.npy")
-x_train = np.arrays([])
-y_train = np.arrays()
-x_test = 
+y_all = np.load("pressure.npy")
+x_train = np.array([0.26869195917816807, 0.592481206125841, 1.278710899574367, 1.9412730181424327, 2.7722006491107827])
+y_train = np.array([0.2691571818390803, 0.5935070487617545, 33.1501516128526, 488.04063183385483, 3420.9410411703243])
+x_test = np.copy(x_all)
 
 #ガウス過程関数
 def kernel(x, x_prime, p, q, r):
@@ -44,22 +44,26 @@ yy = np.dot(np.linalg.inv(K), y_train)
 
 test_length = len(x_test)
 
-for x_test in range(test_length):
+for xtest in range(test_length):
     # テストデータとトレーニングデータ間のカーネル行列の下地を準備
+    k = np.zeros((train_length))
     for x in range(train_length):
-        k[x] = kernel(xtrain[x], xtest[x_test], Theta_1, Theta_2, Theta_3)
+        k[x] = kernel(x_train[x], x_test[xtest], Theta_1, Theta_2, Theta_3)
 
-    s = kernel(xtest[x_test], xtest[x_test], Theta_1, Theta_2, Theta_3)
+    s = kernel(x_test[xtest], x_test[xtest], Theta_1, Theta_2, Theta_3)
 
     # 内積はドットで計算して, 平均値の配列に追加
     mu.append(np.dot(k, yy))
     # 先に『k * K^-1』の部分を(内積なのでドットで)計算
     kK_ = np.dot(k, np.linalg.inv(K))
     # 後半部分との内積をドットで計算して, 分散の配列に追加
-    var.append(s - np.dot(kK_, k.T))
+    var.append(abs(s - np.dot(kK_, k.T)))
+
 
 #描画
-plt.figure(figsize=(12, 5))
+plt.figure(figsize=(10, 5))
+plt.xlim(0,2.8)
+plt.ylim(0,3450)
 plt.title('prediction by Gaussian process', fontsize=20)
 
 # 元の信号
@@ -68,12 +72,13 @@ plt.plot(x_all, y_all, 'x', color='green', label='correct signal')
 plt.plot(x_train, y_train, 'o', color='red', label='sample dots')
 
 # 分散を標準偏差に変換
-std = np.sqrt(var)
+
+std = np.sqrt((var))
 
 # ガウス過程で求めた平均値を信号化
 plt.plot(x_test, mu, color='blue', label='mean by Gaussian process')
 # ガウス過程で求めた標準偏差を範囲化 *範囲に関してはコード末を参照
-plt.fill_between(x_test, mu+2*std, mu-2*std, alpha=.2, color='blue', label= 'standard deviation by Gaussian process')
+plt.fill_between(x_test, mu+2*std, mu-2*std, alpha=0.2, color='blue', label= 'standard deviation by Gaussian process')
 
-plt.legend(bbox_to_anchor=(1.05, 1), loc='upper left', borderaxespad=0, fontsize=12)
+plt.legend(loc='upper left', borderaxespad=0, fontsize=12)
 plt.show()

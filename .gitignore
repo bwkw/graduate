@@ -1,0 +1,7 @@
+*.atoms
+*.dat
+*.input
+*.e*
+*.o*
+log.lammps
+cps.log

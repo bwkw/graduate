@@ -25,6 +25,7 @@ x_train = np.copy(x_all[sample_index])
 y_train = np.copy(y_all[sample_index])
 
 x_test = np.copy(x_all)
+
 #main
 # 平均
 mu = []
@@ -49,7 +50,6 @@ for x in range(train_length):
 yy = np.dot(np.linalg.inv(K), y_train)
 
 test_length = len(x_test)
-
 
 for xtest in range(test_length):
     # テストデータとトレーニングデータ間のカーネル行列の下地を準備
@@ -86,3 +86,4 @@ plt.fill_between(x_all, mu+2*std, mu-2*std, alpha=0.3, color='orange', label= 's
 
 plt.legend(loc='upper left', borderaxespad=0, fontsize=12)
 plt.show()
+

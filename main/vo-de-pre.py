@@ -29,7 +29,8 @@ def makefile(filename):
         f.write("{} {} {}\n".format(volume, density, ave_pressure))
         
 for i in range(51):
-    r = 10 + i/5
+    r = 6 + (19/50)*i
+    r = float(format(r, '.3f'))
     tp_list = []
     time = []
     pressure = []

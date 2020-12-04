@@ -5,3 +5,5 @@
 *.o*
 log.lammps
 cps.log
+BayesianOptimization.py
+test.py

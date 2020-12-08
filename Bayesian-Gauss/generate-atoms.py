@@ -45,7 +45,7 @@ def make_file(filename, atoms, length):
             f.write("{} {} {} {}\n".format(i+1, a.vx, a.vy, a.vz))
 
 atoms = []
-density = 0.00334022
+density = 3.56502778
 volume = 2048/density
 length = math.pow(volume, 1/3)
 length = float(format(length, '.3f'))

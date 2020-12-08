@@ -12,6 +12,7 @@ n=len(x_all)
 missing_value_rate = 0.01
 sample_index = np.sort(np.random.choice(np.arange(n), int(n*missing_value_rate), replace=False))
 
+
 #ガウス過程関数
 def kernel(x, x_prime, p, q, r):
     if x == x_prime:

@@ -11,8 +11,7 @@ max_density = np.max(x_all)
 max_pressure = np.max(y_all)
 
 #max_density 9.481481481481481
-#max_pressure 50
-
+#max_pressure 1835345.523354229 → 50
 
 n = len(x_all)
 

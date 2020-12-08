@@ -56,6 +56,7 @@ for i in range(1,501):
     volume_list.append(V)
 
 max_pressure = max(pressure_list)
+#max_pressure 1835345.523354229
 
 #圧力を[0.50]に正規化
 pressure_list = [(50*i/max_pressure) for i in pressure_list]

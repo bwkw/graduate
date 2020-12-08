@@ -23,6 +23,7 @@ def makefile(filename):
     with open(filename, "a") as f:
         int_pressure = [float(n) for n in pressure]
         ave_pressure = sum(int_pressure[78:1992])/len(int_pressure[78:1992])
+        ave_pressure = 50/1835345.523354229 * ave_pressure
         f.write("{} {} {}\n".format(volume, density, ave_pressure))
         
 
@@ -30,7 +31,7 @@ tp_list = []
 time = []
 pressure = []
 int_pressure = []
-density = 3.56502778
+density = 1.67447648
 volume = 2048/density
 length = math.pow(volume, 1/3)
 length = float(format(length, '.3f'))

@@ -17,7 +17,7 @@ def make_file(filename, length):
         f.write("thermo_style custom time temp press\n\n")
         f.write("run 20000")
 
-density = 3.56502778
+density = 1.67447648
 volume = 2048/density
 length = math.pow(volume, 1/3)
 length = float(format(length, '.3f'))

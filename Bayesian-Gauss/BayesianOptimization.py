@@ -44,6 +44,7 @@ myBopt = GPyOpt.methods.BayesianOptimization(f=f,
                                              acquisition_type='EI',
                                              initial_design_numdata=0)
 
-myBopt.run_optimization(max_iter=5)
-
-myBopt.plot_acquisition()
+for _ in range(10):
+    myBopt.run_optimization(max_iter=1)
+    myBopt.plot_acquisition()
+    plt.show()

@@ -80,6 +80,7 @@ plt.plot(x_train, y_train, 'o', color='red', label='sample dots')
 # 分散を標準偏差に変換
 
 std = abs(np.sqrt(var))
+np.save("30plot-std", std)
 
 # ガウス過程で求めた平均値を信号化
 plt.plot(x_all, mu, color='blue', label='mean by Gaussian process')

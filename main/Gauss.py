@@ -67,6 +67,18 @@ for xtest in range(test_length):
     var.append(abs(s - np.dot(kK_, k.T)))
 
 
+std = abs(np.sqrt(var))
+
+#リストをnumpy配列にしバイナリファイルで保存
+mu = np.array(mu)
+std = np.array(std)
+
+np.save("30-Gauss-mu", mu)
+np.save("30-Gauss-std", std)
+
+
+
+
 #描画
 fig=plt.figure(figsize=(10, 5))
 plt.ylim(-100000,2000000)
@@ -76,11 +88,6 @@ plt.title('d-p prediction by Gaussian process', fontsize=20)
 plt.plot(x_all, y_all, 'x', color='green', label='correct signal')
 # 部分的なサンプル点
 plt.plot(x_train, y_train, 'o', color='red', label='sample dots')
-
-# 分散を標準偏差に変換
-
-std = abs(np.sqrt(var))
-np.save("30plot-std", std)
 
 # ガウス過程で求めた平均値を信号化
 plt.plot(x_all, mu, color='blue', label='mean by Gaussian process')

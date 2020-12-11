@@ -12,7 +12,10 @@ sample_index = np.sort(np.random.choice(np.arange(n), int(n*missing_value_rate),
 x_train = np.copy(x_all[sample_index])
 y_train = np.copy(y_all[sample_index])
 
-mu = np.load()
+#mu(平均),std(標準偏差)のバイナリファイルを読み込む
+mu = np.load("30-Gauss-mu.npy")
+std = np.load("30-Gauss-std.npy")
+
 #描画
 fig=plt.figure(figsize=(10, 5))
 plt.ylim(-100000,2000000)

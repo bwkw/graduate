@@ -1,4 +1,4 @@
-#wcaのatomsファイルを作成
+#ljのatomsファイルを作成
 #隣接距離0.5~2.15
 
 def make_file(filename, distance):
@@ -20,8 +20,8 @@ def make_file(filename, distance):
 
 for i in range(111):
     r = format((0.6 + 0.005*i),'.3f')
-    make_file("wca-atoms/wca{}.atoms".format(r), r)  
+    make_file("lj-atoms/lj{}.atoms".format(r), r)  
 
 for i in range(1, 11):
     r = format((1.15 + 0.2*i),'.3f')
-    make_file("wca-atoms/wca{}.atoms".format(r), r)  
+    make_file("lj-atoms/lj{}.atoms".format(r), r)  

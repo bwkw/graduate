@@ -2,8 +2,8 @@ set term pdf
 set out "dis-poen.pdf"
 set xrange [0:]
 set yrange [-1:8]
-set xlabel "density"
-set ylabel "pressure"
+set xlabel "distance"
+set ylabel "potential-energy"
 set xlabel font "Arial,15"
 set ylabel font "Arial,15"
 #ticsはメモリ文字

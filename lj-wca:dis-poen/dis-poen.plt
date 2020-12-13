@@ -1,5 +1,6 @@
 set term pdf
 set out "dis-poen.pdf"
+set xrange [0:]
 set yrange [-1:8]
 set xlabel "density"
 set ylabel "pressure"

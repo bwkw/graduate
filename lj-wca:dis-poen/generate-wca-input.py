@@ -8,7 +8,7 @@ def make_file(filename, distance):
         f.write("mass 1 1.0\n\n")
         f.write("pair_style lj/cut 1.12246\n")
         f.write("pair_modify shift yes\n")
-        f.write("pair_coeff 1 1 1.0 1.0 1.12246\n\n")
+        f.write("pair_coeff 1 1 1.0 1.0 1.0\n\n")
         f.write("thermo 1\n")
         f.write("thermo_style custom pe\n\n")
         f.write("run 0")

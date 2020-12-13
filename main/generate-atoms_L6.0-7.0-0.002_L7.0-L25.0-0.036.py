@@ -48,11 +48,11 @@ for i in range(501):
     r = 6 + i/500
     r = float(format(r, '.3f'))
     add_ball(atoms, 1.0, r)
-    make_file("L{}.atoms".format(r), atoms, r)
+    make_file("atoms/L{}.atoms".format(r), atoms, r)
 
 for i in range(1,501):
     atoms = []
     r = 7 + (18/500)*i
     r = float(format(r, '.3f'))
     add_ball(atoms, 1.0, r)
-    make_file("L{}.atoms".format(r), atoms, r)  
+    make_file("atoms/L{}.atoms".format(r), atoms, r)  

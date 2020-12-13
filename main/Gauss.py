@@ -9,9 +9,12 @@ y_all = np.load("pressure_L6.0-7.0-0.002_L7.0-L25.0-0.036.npy")
 
 n=len(x_all)
 
+np.random.seed(0)
 missing_value_rate = 0.03
 sample_index = np.sort(np.random.choice(np.arange(n), int(n*missing_value_rate), replace=False))
 
+#sample_index=np.sort(np.append(sample_index, 513))
+#sample_index=np.sort(np.append(sample_index, 581))
 
 #ガウス過程関数
 def kernel(x, x_prime, p, q, r):
@@ -26,6 +29,7 @@ x_train = np.copy(x_all[sample_index])
 y_train = np.copy(y_all[sample_index])
 
 x_test = np.copy(x_all)
+print(len(x_train))
 
 #main
 # 平均
@@ -75,4 +79,3 @@ std = np.array(std)
 
 np.save("30-Gauss-mu", mu)
 np.save("30-Gauss-std", std)
-

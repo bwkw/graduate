@@ -8,7 +8,13 @@ y_all = np.load("pressure_L6.0-7.0-0.002_L7.0-L25.0-0.036.npy")
 #一部のデータをとってくる
 n=len(x_all)
 missing_value_rate = 0.03
+np.random.seed(0)
 sample_index = np.sort(np.random.choice(np.arange(n), int(n*missing_value_rate), replace=False))
+
+#sample_index=np.sort(np.append(sample_index, 513))
+#ample_index=np.sort(np.append(sample_index, 581))
+
+print(sample_index)
 x_train = np.copy(x_all[sample_index])
 y_train = np.copy(y_all[sample_index])
 

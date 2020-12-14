@@ -33,7 +33,7 @@ for i in range(501):
     V = r**3
     N = 2048
     density = N/V
-    loadfile("L{}.dat".format(r))
+    loadfile("dat/L{}.dat".format(r))
     int_pressure = [float(a) for a in pressure]
     ave_pressure = sum(int_pressure[78:1992])/len(int_pressure[78:1992])
     pressure_list.append(ave_pressure)
@@ -48,7 +48,7 @@ for i in range(1,501):
     V = r**3
     N = 2048
     density = N/V
-    loadfile("L{}.dat".format(r))
+    loadfile("dat/L{}.dat".format(r))
     int_pressure = [float(a) for a in pressure]
     ave_pressure = sum(int_pressure[78:1992])/len(int_pressure[78:1992])
     pressure_list.append(ave_pressure)

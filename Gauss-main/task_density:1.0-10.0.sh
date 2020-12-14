@@ -1,0 +1,10 @@
+lmp_serial < input/L12.699.input > dat/L12.699.dat
+lmp_serial < input/L10.079.input > dat/L10.079.dat
+lmp_serial < input/L8.805.input > dat/L8.805.dat
+lmp_serial < input/L8.0.input > dat/L8.0.dat
+lmp_serial < input/L7.427.input > dat/L7.427.dat
+lmp_serial < input/L6.989.input > dat/L6.989.dat
+lmp_serial < input/L6.639.input > dat/L6.639.dat
+lmp_serial < input/L6.35.input > dat/L6.35.dat
+lmp_serial < input/L6.105.input > dat/L6.105.dat
+lmp_serial < input/L5.894.input > dat/L5.894.dat

@@ -20,6 +20,12 @@ def kernel(x, x_prime, p, q, r):
 x_train = np.load("density_den0.0-10.0.npy")
 y_train = np.load("pressure_den0.0-10.0.npy")
 
+x_train = np.sort(np.append(x_train, x_all[750]))
+y_train = np.sort(np.append(y_train, y_all[750]))
+
+print(x_train)
+print(y_train)
+
 x_test = np.copy(x_all)
 
 #main
@@ -68,5 +74,5 @@ std = abs(np.sqrt(var))
 mu = np.array(mu)
 std = np.array(std)
 
-np.save("Gauss-mu/11-Gauss-mu", mu)
-np.save("Gauss-std/11-Gauss-std", std)
+np.save("Gauss-mu/12-Gauss-mu", mu)
+np.save("Gauss-std/12-Gauss-std", std)

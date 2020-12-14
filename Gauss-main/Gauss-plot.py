@@ -9,10 +9,13 @@ y_all = np.load("pressure_L6.0-7.0-0.002_L7.0-L25.0-0.036.npy")
 x_train = np.load("density_den0.0-10.0.npy")
 y_train = np.load("pressure_den0.0-10.0.npy")
 
+x_train = np.sort(np.append(x_train, x_all[750]))
+y_train = np.sort(np.append(y_train, y_all[750]))
+
 
 #mu(平均),std(標準偏差)のバイナリファイルを読み込む
-mu = np.load("Gauss-mu/11-Gauss-mu.npy")
-std = np.load("Gauss-std/11-Gauss-std.npy")
+mu = np.load("Gauss-mu/12-Gauss-mu.npy")
+std = np.load("Gauss-std/12-Gauss-std.npy")
 
 #描画
 fig=plt.figure(figsize=(10, 5))
@@ -33,4 +36,4 @@ plt.fill_between(x_all, mu+100000*std, mu-100000*std, alpha=0.3, color='orange',
 
 plt.legend(loc='upper left', borderaxespad=0, fontsize=12)
 plt.show()
-fig.savefig("Gauss-plt/11plot d-p prediction by Gaussian process")
+fig.savefig("Gauss-plt/12plot d-p prediction by Gaussian process")

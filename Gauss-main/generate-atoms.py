@@ -45,11 +45,11 @@ def make_file(filename, atoms, length):
             f.write("{} {} {} {}\n".format(i+1, a.vx, a.vy, a.vz))
 
 length_list = []
-for i in range(1,11):
-    density = i
+for i in range(1,2001):
+    density = 0.005*i
     volume = 2048/density
     length = math.pow(volume, 1/3)
-    length = float(format(length, '.3f'))
+    length = float(format(length, '.5f'))
     length_list.append(length)
 
 for i in range(len(length_list)):

@@ -17,18 +17,12 @@ def make_file(filename, length):
         f.write("thermo_style custom time temp press\n\n")
         f.write("run 20000")
 
-density = 0.00334022
-volume = 2048/density
-length = math.pow(volume, 1/3)
-length = float(format(length, '.3f'))
-make_file("L{}.input".format(length), length)
-
 length_list = []
-for i in range(1,11):
-    density = i
+for i in range(1,2001):
+    density = 0.005*i
     volume = 2048/density
     length = math.pow(volume, 1/3)
-    length = float(format(length, '.3f'))
+    length = float(format(length, '.5f'))
     length_list.append(length)
 
 for i in range(len(length_list)):

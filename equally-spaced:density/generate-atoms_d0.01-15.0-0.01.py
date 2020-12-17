@@ -44,12 +44,13 @@ def make_file(filename, atoms, length):
         for i, a in enumerate(atoms):
             f.write("{} {} {} {}\n".format(i+1, a.vx, a.vy, a.vz))
 
-atoms = []
+
 for i in range(1500):
-    density = 0.01+i/1000
+    atoms = []
+    density = float(format(0.01+i/100, "2f"))
     volume = 2048/density
     length = math.pow(volume, 1/3)
     add_ball(atoms, 1.0, length)
-    make_file("atoms/L{}.atoms".format(length), atoms, length)
+    make_file("atoms/d{}.atoms".format(density), atoms, length)
 
 

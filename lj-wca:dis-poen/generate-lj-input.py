@@ -6,7 +6,7 @@ def make_file(filename, distance):
         f.write("atom_style atomic\n\n")
         f.write("read_data lj-atoms/lj{}.atoms\n\n".format(distance))
         f.write("mass 1 1.0\n\n")
-        f.write("pair_style lj/cut 2.5\n")
+        f.write("pair_style lj\n")
         f.write("pair_modify shift yes\n")
         f.write("pair_coeff 1 1 1.0 1.0 \n\n")
         f.write("thermo 1\n")

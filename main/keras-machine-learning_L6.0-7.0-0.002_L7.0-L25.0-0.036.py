@@ -19,15 +19,17 @@ def create_model():
 model = create_model()
 
 density = np.load("density_L6.0-7.0-0.002_L7.0-L25.0-0.036.npy")
-pressure = np.load("pressureL6.0-7.0-0.002_L7.0-L25.0-0.036.npy")
+pressure = np.load("pressure_L6.0-7.0-0.002_L7.0-L25.0-0.036.npy")
 
 #訓練データとしてsin(i)上の点を食わせる
 train_datas = density.tolist()
 train_labels = pressure.tolist()
+pressure_max = max(train_labels)
+train_labels = [i/pressure_max for i in range(len(train_labels))]
 
 #学習段階
 model.fit(
-    train_datas,train_labels,epochs=100
+    train_datas,train_labels,epochs=1000
 )
 
 #テスト段階

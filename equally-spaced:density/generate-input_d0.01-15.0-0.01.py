@@ -11,7 +11,7 @@ def make_file(filename, density):
         f.write("timestep        0.0001\n\n")
         f.write("pair_style lj/cut 1.12246\n")
         f.write("pair_modify shift yes\n")
-        f.write("pair_coeff 1 1 1.0 1.0 1.0\n\n")
+        f.write("pair_coeff 1 1 1.0 1.0 1.12246\n\n")
         f.write("fix 1 all nvt temp 1.0 1.0 0.01\n\n")
         f.write("thermo 10\n")
         f.write("thermo_style custom time temp press\n\n")

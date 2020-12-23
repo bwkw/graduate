@@ -23,7 +23,6 @@ def loadfile(filename):
 
 density_list = []
 pressure_list = []
-volume_list = []
 
 for i in range(1500):
     tp_list = []

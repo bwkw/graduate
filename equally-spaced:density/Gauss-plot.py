@@ -12,23 +12,70 @@ y_all.insert(0,0)
 x_train = []
 y_train = []
 
-for i in range(2):
-    density = 1500*i
+for i in range(3):
+    density = 750*i
     xtrain = x_all[density]
     ytrain = y_all[density]
     x_train.append(xtrain)
     y_train.append(ytrain)
+  
+x_train.append(x_all[271])
+x_train.append(x_all[1021])
+x_train.append(x_all[510])
+x_train.append(x_all[1260])
+x_train.append(x_all[135])
+x_train.append(x_all[885])
+x_train.append(x_all[1380])
+x_train.append(x_all[630])
+x_train.append(x_all[1140])
+x_train.append(x_all[390])
+x_train.append(x_all[203])
+x_train.append(x_all[953])
+x_train.append(x_all[67])
+x_train.append(x_all[817])
+x_train.append(x_all[1440])
+x_train.append(x_all[570])
+x_train.append(x_all[1200])
+x_train.append(x_all[449])
+x_train.append(x_all[690])
+x_train.append(x_all[1320])
+x_train.append(x_all[1080])
+x_train.append(x_all[330])
+x_train.sort()
+y_train.append(y_all[271])
+y_train.append(y_all[1021])
+y_train.append(y_all[510])
+y_train.append(y_all[1260])
+y_train.append(y_all[135])
+y_train.append(y_all[885])
+y_train.append(y_all[1380])
+y_train.append(y_all[630])
+y_train.append(y_all[1140])
+y_train.append(y_all[390])
+y_train.append(y_all[203])
+y_train.append(y_all[953])
+y_train.append(y_all[67])
+y_train.append(y_all[817])
+y_train.append(y_all[1440])
+y_train.append(y_all[570])
+y_train.append(y_all[1200])
+y_train.append(y_all[449])
+y_train.append(y_all[690])
+y_train.append(y_all[1320])
+y_train.append(y_all[1080])
+y_train.append(y_all[330])
+y_train.sort()
 
 #mu(平均),std(標準偏差)のバイナリファイルを読み込む
-mu = np.load("Gauss-mu/2-Gauss-mu.npy")
-std = np.load("Gauss-std/2-Gauss-std.npy")
+mu = np.load("Gauss-mu/25-Gauss-mu.npy")
+std = np.load("Gauss-std/25-Gauss-std.npy")
 
 #描画
 fig=plt.figure(figsize=(10, 5))
 plt.xlabel("density")
 plt.ylabel("pressure")
-plt.ylim(-100000,2000000)
-plt.title('2plot d-p prediction by Gaussian process', fontsize=20)
+plt.ylim(-2000000,20000000)
+plt.title('25plot d-p prediction by Gaussian process', fontsize=20)
 
 # 元の信号
 plt.plot(x_all, y_all, 'x', color='green', label='correct signal')
@@ -38,8 +85,8 @@ plt.plot(x_train, y_train, 'o', color='red', label='sample dots')
 # ガウス過程で求めた平均値を信号化
 plt.plot(x_all, mu, color='blue', label='mean by Gaussian process')
 # ガウス過程で求めた標準偏差を範囲化 *範囲に関してはコード末を参照
-plt.fill_between(x_all, mu+std, mu-std, alpha=0.3, color='orange', label= 'standard deviation by Gaussian process')
+plt.fill_between(x_all, mu+1000000*std, mu-1000000*std, alpha=0.3, color='orange', label= 'standard deviation by Gaussian process')
 
 plt.legend(loc='upper left', borderaxespad=0, fontsize=12)
 plt.show()
-fig.savefig("Gauss-plt/2plot d-p prediction by Gaussian process")
+fig.savefig("Gauss-plt/25plot d-p prediction by Gaussian process")

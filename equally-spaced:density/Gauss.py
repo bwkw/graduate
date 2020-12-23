@@ -14,12 +14,59 @@ y_all.insert(0,0)
 x_train = []
 y_train = []
 
-for i in range(2):
-    density = 1500*i
+for i in range(3):
+    density = 750*i
     xtrain = x_all[density]
     ytrain = y_all[density]
     x_train.append(xtrain)
     y_train.append(ytrain)
+
+x_train.append(x_all[271])
+x_train.append(x_all[1021])
+x_train.append(x_all[510])
+x_train.append(x_all[1260])
+x_train.append(x_all[135])
+x_train.append(x_all[885])
+x_train.append(x_all[1380])
+x_train.append(x_all[630])
+x_train.append(x_all[1140])
+x_train.append(x_all[390])
+x_train.append(x_all[203])
+x_train.append(x_all[953])
+x_train.append(x_all[67])
+x_train.append(x_all[817])
+x_train.append(x_all[1440])
+x_train.append(x_all[570])
+x_train.append(x_all[1200])
+x_train.append(x_all[449])
+x_train.append(x_all[690])
+x_train.append(x_all[1320])
+x_train.append(x_all[1080])
+x_train.append(x_all[330])
+x_train.sort()
+y_train.append(y_all[271])
+y_train.append(y_all[1021])
+y_train.append(y_all[510])
+y_train.append(y_all[1260])
+y_train.append(y_all[135])
+y_train.append(y_all[885])
+y_train.append(y_all[1380])
+y_train.append(y_all[630])
+y_train.append(y_all[1140])
+y_train.append(y_all[390])
+y_train.append(y_all[203])
+y_train.append(y_all[953])
+y_train.append(y_all[67])
+y_train.append(y_all[817])
+y_train.append(y_all[1440])
+y_train.append(y_all[570])
+y_train.append(y_all[1200])
+y_train.append(y_all[449])
+y_train.append(y_all[690])
+y_train.append(y_all[1320])
+y_train.append(y_all[1080])
+y_train.append(y_all[330])
+y_train.sort()
 
 #ガウス過程関数
 def kernel(x, x_prime, p, q, r):
@@ -77,5 +124,5 @@ std = abs(np.sqrt(var))
 mu = np.array(mu)
 std = np.array(std)
 
-np.save("Gauss-mu/2-Gauss-mu", mu)
-np.save("Gauss-std/2-Gauss-std", std)
+np.save("Gauss-mu/25-Gauss-mu", mu)
+np.save("Gauss-std/25-Gauss-std", std)

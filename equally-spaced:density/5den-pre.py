@@ -14,11 +14,11 @@ y_all.insert(0,0)
 fitting5_list = []
 for i in range(1501):
     x = i/100
-    a = -7.21588
-    b = 22.8075
-    c = -35.1927
-    d = 0.737129
-    e = 24.237
+    a = 1
+    b = 8.40579
+    c = -29.0885
+    d = 0.0158545
+    e = 24.2634
     y = a*x + b*x**2 +c*x**3 + d*x**4 + e*x**5
     fitting5_list.append(y)
 

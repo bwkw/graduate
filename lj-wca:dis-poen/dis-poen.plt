@@ -10,4 +10,4 @@ set ylabel font "Arial,15"
 set tics font "Arial,10"
 #keyは凡例
 set key font"Arial,16"
-plot "dis-poen.dat" u 1:2 with lines linewidth 5 title "wca", "dis-poen.dat" u 1:3 with lines linewidth 5 title "lj"
+plot "dis-poen.dat" u 1:2 with lines linewidth 5 title "WCA", "dis-poen.dat" u 1:3 with lines linewidth 5 title "LJ"

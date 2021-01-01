@@ -14,7 +14,6 @@ pair_coeff 1 1 1.0 1.0 1.12246
 
 fix 1 all nvt temp 1.0 1.0 0.01
 
-thermo 10
-dump		id all atom 50 initial_dump.melt
+dump		id all atom 100 initial_dump.melt
 
 run 20000

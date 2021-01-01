@@ -27,4 +27,13 @@ for i in range(len(x_all)):
     with open("5den-pre.dat", "a") as f:
         f.write("{} {} {}\n".format(x_all[i], y_all[i], fitting5_list[i]))
 
+gap_list = []
+for i in range(1,len(x_all)):
+    measurement = y_all[i]
+    fitting = fitting5_list[i]
+    gap = abs(((measurement-fitting)/measurement))*100
+    gap_list.append(gap)
 
+average_gap = sum(gap_list)/len(gap_list)
+
+print(average_gap)

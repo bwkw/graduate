@@ -9,4 +9,4 @@ set tics font "Arial,10"
 #keyは凡例
 set key font"Arial,16"
 set key left top
-plot "5den-pre.dat" u 1:2 with lines linewidth 1 title "測定値", "5den-pre.dat" u 1:3 with lines linewidth 1 title "5次近似式"
+plot "5den-pre.dat" u 1:2 with lines linewidth 1 title "測定値", "5den-pre.dat" u 1:3 with lines linewidth 1 title "5次近似値"

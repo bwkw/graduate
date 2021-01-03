@@ -4,24 +4,21 @@ import GPy
 import GPyOpt
 
 data = 1
-x_all = np.load("density_L6.0-7.0-0.002_L7.0-L25.0-0.036.npy")
-y_all = np.load("pressure_L6.0-7.0-0.002_L7.0-L25.0-0.036.npy")
+x_all = np.load("density_d0.01-15.0-0.01.npy")
+y_all = np.load("pressure_d0.01-15.0-0.01.npy")
 
-max_density = np.max(x_all) 
-max_pressure = np.max(y_all)
+x_all = np.insert(x_all,0,0)
+y_all = np.insert(y_all,0,0)
 
-#max_density 9.481481481481481
-#max_pressure 1835345.523354229 → 50
+initial_density = np.array([])
+initial_pressure = np.array([])
 
-n = len(x_all)
+for i in range(2):
+    p = i*1500
+    initial_density = np.append(initial_density, x_all[p])
+    initial_pressure = np.append(initial_pressure, y_all[p])
 
-missing_value_rate = 0.01
-sample_index = np.sort(np.random.choice(np.arange(n), int(n*missing_value_rate), replace=False))
-
-initial_density = np.copy(x_all[sample_index])
-initial_pressure = np.copy(y_all[sample_index])
-
-
+print(initial_density)
 initial_density = initial_density.reshape((-1,1)) #n×1の行列に変換
 initial_pressure = initial_pressure.reshape((-1,1))
 
@@ -34,7 +31,7 @@ def f(density):
     return pressure
 
 
-bounds = [{'name': 'a', 'type': 'continuous', 'domain': (0.0, 9.5)}]
+bounds = [{'name': 'a', 'type': 'continuous', 'domain': (0.0, 15.0)}]
 myBopt = GPyOpt.methods.BayesianOptimization(f=f,
                                              domain=bounds,
                                              X = initial_density,

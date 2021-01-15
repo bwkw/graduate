@@ -19,7 +19,7 @@ for i in range(3):
     ytrain = y_all[density]
     x_train.append(xtrain)
     y_train.append(ytrain)
-  
+
 x_train.append(x_all[271])
 x_train.append(x_all[1021])
 x_train.append(x_all[510])
@@ -44,6 +44,7 @@ x_train.append(x_all[885])
 #x_train.append(x_all[330])
 #x_train.append(x_all[33])
 x_train.sort()
+
 y_train.append(y_all[271])
 y_train.append(y_all[1021])
 y_train.append(y_all[510])
@@ -75,20 +76,19 @@ std = np.load("Gauss-std/9-Gauss-std.npy")
 
 #描画
 fig=plt.figure(figsize=(10, 5))
-plt.xlabel('$\it{ρ}$')
-plt.ylabel('$\it{P}$')
+plt.xlabel('$\it{ρ}$', fontsize=18)
+plt.ylabel('$\it{P}$', fontsize=18)
 
-
-# 元の信号
+# 測定値
 plt.plot(x_all, y_all, 'x', color='green', label='測定値')
-# 部分的なサンプル点
+# 試行点
 plt.plot(x_train, y_train, 'o', color='red', label='試行点')
 
-# ガウス過程で求めた平均値を信号化
+# ガウス過程で求めた平均値を可視化
 plt.plot(x_all, mu, color='blue', label='平均')
-# ガウス過程で求めた標準偏差を範囲化 *範囲に関してはコード末を参照
+# ガウス過程で求めた標準偏差を可視化
 plt.fill_between(x_all, mu+1000000*std, mu-1000000*std, alpha=0.3, color='orange', label= '標準偏差')
 
-plt.legend(loc='upper left', borderaxespad=0, fontsize=12)
-plt.show()
-fig.savefig("Gauss-plt/9plot-Gauss")
+#凡例
+plt.legend(loc='upper left', borderaxespad=0, fontsize=20)
+fig.savefig("Gauss-plt/26plot-Gauss")

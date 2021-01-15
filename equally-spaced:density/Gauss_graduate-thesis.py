@@ -2,8 +2,9 @@
 import numpy as np 
 import matplotlib.pyplot as plt
 import math
+import japanize_matplotlib
 
-#データセット
+#測定値（全点）
 x_all = np.load("density_d0.01-15.0-0.01.npy")
 y_all = np.load("pressure_d0.01-15.0-0.01.npy")
 x_all = x_all.tolist()
@@ -11,6 +12,7 @@ y_all = y_all.tolist()
 x_all.insert(0,0)
 y_all.insert(0,0)
 
+#試行点
 x_train = []
 y_train = []
 for i in range(3):
@@ -20,54 +22,35 @@ for i in range(3):
     x_train.append(xtrain)
     y_train.append(ytrain)
 
-x_train.append(x_all[271])
-x_train.append(x_all[1021])
-x_train.append(x_all[510])
-x_train.append(x_all[1260])
-x_train.append(x_all[135])
-x_train.append(x_all[885])
-x_train.append(x_all[1380])
-x_train.append(x_all[630])
-x_train.append(x_all[1140])
-x_train.append(x_all[390])
-x_train.append(x_all[203])
-x_train.append(x_all[953])
-x_train.append(x_all[67])
-x_train.append(x_all[817])
-x_train.append(x_all[1440])
-x_train.append(x_all[570])
-x_train.append(x_all[1200])
-x_train.append(x_all[449])
-x_train.append(x_all[690])
-x_train.append(x_all[1320])
-x_train.append(x_all[1080])
-x_train.append(x_all[330])
-x_train.append(x_all[33])
-x_train.sort()
-y_train.append(y_all[271])
-y_train.append(y_all[1021])
-y_train.append(y_all[510])
-y_train.append(y_all[1260])
-y_train.append(y_all[135])
-y_train.append(y_all[885])
-y_train.append(y_all[1380])
-y_train.append(y_all[630])
-y_train.append(y_all[1140])
-y_train.append(y_all[390])
-y_train.append(y_all[203])
-y_train.append(y_all[953])
-y_train.append(y_all[67])
-y_train.append(y_all[817])
-y_train.append(y_all[1440])
-y_train.append(y_all[570])
-y_train.append(y_all[1200])
-y_train.append(y_all[449])
-y_train.append(y_all[690])
-y_train.append(y_all[1320])
-y_train.append(y_all[1080])
-y_train.append(y_all[330])
-y_train.append(y_all[33])
-y_train.sort()
+gauss = []
+gauss.append(271)
+gauss.append(1021)
+gauss.append(510)
+gauss.append(1260)
+gauss.append(135)
+gauss.append(885)
+gauss.append(1380)
+gauss.append(630)
+gauss.append(1140)
+gauss.append(390)
+gauss.append(203)
+gauss.append(953)
+gauss.append(67)
+gauss.append(817)
+gauss.append(1440)
+gauss.append(570)
+gauss.append(1200)
+gauss.append(449)
+gauss.append(690)
+gauss.append(1320)
+gauss.append(1080)
+gauss.append(330)
+gauss.append(33)
+gauss.sort()
+
+for i in range(len(gauss)):
+    x_train.append(x_all[gauss[i]])
+    y_train.append(y_all[gauss[i]])
 
 #ガウス過程関数
 def kernel(x, x_prime, p, q, r):
@@ -79,7 +62,6 @@ def kernel(x, x_prime, p, q, r):
 
 x_test = np.copy(x_all)
 
-#main
 # 平均
 mu = []
 # 分散
@@ -97,7 +79,8 @@ K = np.zeros((train_length, train_length))
 
 for x in range(train_length):
     for x_prime in range(train_length):
-        K[x, x_prime] = kernel(x_train[x], x_train[x_prime], Theta_1, Theta_2, Theta_3)
+        K[x, x_prime] = kernel
+        (x_train[x], x_train[x_prime], Theta_1, Theta_2, Theta_3)
 
 
 # 内積はドットで計算
@@ -119,11 +102,36 @@ for xtest in range(test_length):
     # 後半部分との内積をドットで計算して, 分散の配列に追加
     var.append(abs(s - np.dot(kK_, k.T)))
 
-
 std = abs(np.sqrt(var))
 
-#リストをnumpy配列にしバイナリファイルで保存
+#描画
+fig=plt.figure(figsize=(10, 5))
+plt.xlabel('$\it{ρ}$', fontsize=18)
+plt.ylabel('$\it{P}$', fontsize=18)
+
+# 測定値
+plt.plot(x_all, y_all, 'x', color='green', label='測定値')
+# 試行点
+plt.plot(x_train, y_train, 'o', color='red', label='試行点')
+
+# ガウス過程で求めた平均値を可視化
+plt.plot(x_all, mu, color='blue', label='平均')
+# ガウス過程で求めた標準偏差を可視化
+plt.fill_between(x_all, mu+1000000*std, mu-1000000*std, 
+alpha=0.3, color='orange', label= '標準偏差')
+
+#凡例
+plt.legend(loc='upper left', borderaxespad=0, fontsize=20)
+
+#平均・標準偏差・画像を保存
 mu = np.array(mu)
 std = np.array(std)
 np.save("Gauss-mu/26-Gauss-mu", mu)
 np.save("Gauss-std/26-Gauss-std", std)
+fig.savefig("Gauss-plt/26plot-Gauss")
+
+#標準偏差が最大となるdensity(密度)を取得する
+std_max_in = np.argmax(std)
+std_max_density = 0.01*std_max_in
+
+print("{}:{}".format("density",std_max_density))

@@ -1,6 +1,6 @@
 import numpy as np
 
-std = np.load("Gauss-std/25-Gauss-std.npy")
+std = np.load("Gauss-std/26-Gauss-std.npy")
 
 std_max = np.amax(std)
 std_max_in = np.argmax(std)

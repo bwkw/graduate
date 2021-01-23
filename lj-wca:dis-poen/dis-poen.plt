@@ -1,7 +1,7 @@
 set term pdf
 set out "dis-poen.pdf"
 set xrange [0:]
-set yrange [-1:8]
+set yrange [-1:4]
 set xlabel "{/Arial-Italic r}"
 set ylabel "{/Arial-Italic E}"
 set xlabel font "Arial,15"
